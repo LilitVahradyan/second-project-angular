@@ -1,0 +1,43 @@
+<table>
+    <tr>
+      <th>First name</th>
+      <th>Last name</th>
+      <th>Age</th>
+      <th>Password</th>
+      <th>Options</th>
+    </tr>
+    <tr *ngFor = "let user of users; let idx = index" [ngClass] = "user.options.status ? 'active' : 'inactive'" >
+       <td>{{user.firstName}} </td>
+       <td>{{user.lastName}} </td>
+       <td>{{user.age}} </td>
+       <td>{{user.password}} </td>
+       <td>
+           <button *ngIf = "user.options.status ; else status" (click) = "changeStatus(idx)"> Active</button>
+           <ng-template #status>
+                <button (click) = "changeStatus(idx)">Inactive</button>   
+           </ng-template>
+           <button *ngIf = "!user.options.deleted" (click) = "deleteUser(idx)">Delete</button>
+        </td>
+    </tr>  
+  </table>
+
+  <div>
+      <button (click) = "addFrom()">Add New User</button>
+  </div>
+  <form action="" #form="ngForm" *ngIf = "addUserBtnIsClicked">
+      <div>
+          <input type="text" placeholder="First Name" [(ngModel)] = "firstName" [ngModelOptions]="{standalone: true}">
+      </div>
+      <div>
+        <input type="text" placeholder="Last Name" [(ngModel)] = "lastName" [ngModelOptions]="{standalone: true}">
+    </div>
+      <div>
+        <input type="number" placeholder="Age" [(ngModel)] = "age" [ngModelOptions]="{standalone: true}">
+    </div>
+    <div>
+        <input type="password" placeholder="password" [(ngModel)] = "password" [ngModelOptions]="{standalone: true}">
+    </div>
+    <div>
+        <button (click) = "addUser()">Add</button>
+    </div>
+</form>

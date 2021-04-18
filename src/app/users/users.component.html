@@ -6,17 +6,13 @@
       <th>Password</th>
       <th>Options</th>
     </tr>
-    <tr *ngFor = "let user of users; let idx = index" [ngClass] = "user.options.status ? 'active' : 'inactive'" >
+    <tr *ngFor = "let user of users; let idx = index" [ngClass] = "user.status ? 'active' : 'inactive'" >
        <td>{{user.firstName}} </td>
        <td>{{user.lastName}} </td>
        <td>{{user.age}} </td>
        <td>{{user.password}} </td>
        <td>
-           <button *ngIf = "user.options.status ; else status" (click) = "changeStatus(idx)"> Active</button>
-           <ng-template #status>
-                <button (click) = "changeStatus(idx)">Inactive</button>   
-           </ng-template>
-           <button *ngIf = "!user.options.deleted" (click) = "deleteUser(idx)">Delete</button>
+           <button  (click) = "changeStatus(idx)">{{ user.status ? 'Active' : 'Inactive' }}</button>
         </td>
     </tr>  
   </table>

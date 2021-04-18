@@ -33,20 +33,16 @@ export class UsersComponent {
       lastName: 'Doe',
       age: 32,
       password: '121313',
-      options: {
-        deleted: false,
-        status: true
-      }
+      status: true
+      
     },
     {
       firstName: 'Mike',
       lastName: 'Daniels',
       age: 52,
       password: '656356',
-      options: {
-        deleted: false,
-        status: false
-      }
+      status: false
+    
     }
   ];
    
@@ -64,10 +60,8 @@ export class UsersComponent {
       lastName: this.lastName,
       age: this.age, 
       password: this.password,
-      options: {
-        deleted: false,
-        status: true
-      }
+      status: true
+      
     })
 
     this.firstName = ' ';
@@ -81,7 +75,7 @@ export class UsersComponent {
   }
 
   changeStatus(idx: number){
-    this.users[idx].options.status = !this.users[idx].options.status
+    this.users[idx].status = !this.users[idx].status
   }
 
 }

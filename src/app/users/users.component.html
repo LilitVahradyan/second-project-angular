@@ -13,6 +13,8 @@
        <td>{{user.password}} </td>
        <td>
            <button  (click) = "changeStatus(idx)">{{ user.status ? 'Active' : 'Inactive' }}</button>
+           <button (click) = "deleteUser(idx)">Delete</button>
+
         </td>
     </tr>  
   </table>

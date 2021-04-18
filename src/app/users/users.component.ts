@@ -7,19 +7,6 @@ import { Component } from '@angular/core';
 })
 export class UsersComponent {
 
-  // users:{}[] = [
-  //   {
-  //     firstName: 'string',
-  //     lastName: 'string',
-  //     age: 'number',
-  //     password: 'string',
-  //     options: {
-  //       deleted: 'boolean',
-  //       status: 'boolean'
-  //     }
-  //   }
-  // ];
- 
  addUserBtnIsClicked = false;
  
  firstName = ' ';
@@ -27,7 +14,14 @@ export class UsersComponent {
  age = 0;
  password = '';
   
- users = [
+ users: {
+   firstName: string, 
+   lastName: string, 
+   age: number, 
+   password: string, 
+   status: boolean
+  }[] = 
+   [
     {
       firstName: 'John',
       lastName: 'Doe',
@@ -46,7 +40,7 @@ export class UsersComponent {
     }
   ];
    
-  addFrom(){
+  addFrom() : void{
     if(!this.addUserBtnIsClicked){
       this.addUserBtnIsClicked = true
     }else{
@@ -54,7 +48,7 @@ export class UsersComponent {
     }
   }
  
-  addUser(){
+  addUser() : void {
     this.users.unshift({
       firstName: this.firstName, 
       lastName: this.lastName,
@@ -70,11 +64,11 @@ export class UsersComponent {
     this.password = '';
   }
 
-  deleteUser(idx: number){
+  deleteUser(idx: number) : void{
     this.users.splice(idx, 1); 
   }
 
-  changeStatus(idx: number){
+  changeStatus(idx: number) : void{
     this.users[idx].status = !this.users[idx].status
   }
 
